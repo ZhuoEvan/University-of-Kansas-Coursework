@@ -1,0 +1,10 @@
+8 8
+2 2
+SSSSSSSS
+SSSSSSSS
+SSSSSSSS
+@PPPP#P#
+########
+@P##SPPS
+########
+PSSSPSP@

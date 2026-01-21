@@ -1,0 +1,18 @@
+NEXT
+TREAT
+ARRIVE Evan Zhuo 20 overconfidence 2
+COUNT
+ARRIVE totally_not_evan totally_not_zhuo 40 underconfidence 9
+ARRIVE Jimmy Donaldson 30 lunchly 9
+ARRIVE Logan Paul 40 cringe 8
+NEXT
+COUNT
+TREAT
+NEXT
+TREAT
+NEXT
+TREAT
+COUNT
+ARRIVE Dr. Pepper 90 cola_disorder 8
+NEXT
+TREAT

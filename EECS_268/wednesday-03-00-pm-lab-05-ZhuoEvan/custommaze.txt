@@ -1,0 +1,12 @@
+10 8
+4 4
+########
+PPPSS@#S
+S##S###P
+SS#PPPPP
+####S###
+@PPP#SS#
+S#######
+##SSSSSS
+########
+@PPPSSSS
