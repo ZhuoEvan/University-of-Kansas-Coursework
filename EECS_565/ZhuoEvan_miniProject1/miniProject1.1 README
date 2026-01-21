@@ -1,0 +1,6 @@
+1. Enter the option number (1, 2, or 3).
+2. When the program asks "(1/2) Enter Message: ", enter a no space message. The program is case insensitive.
+3. When the program asks "((2/2) Enter Key: )", enter a no space key. The program is case insensitive.
+4. The program will print the result into the terminal for option 1 and 2.
+5. The program is on a loop until option 3 is selected.
+6. Selecting option 3 will terminate the program.

@@ -1,0 +1,6 @@
+1. WARNING: The program will create a file called "output.txt"! MAKE SURE THERE IS NO FILE CALLED "output.txt" or else the program will OVERWRITE that file!!!
+2. Have a .txt file titled "MP1_dict" with all the first words inside. Make sure the "MP1_dict.txt" file's first words are uppercase and each word is on its own line.
+3. The program will ask "(1/3) Enter Ciphertext: ", enter the ciphertext with no spaces between words. The program is case-insensitive.
+4. The program will then ask "(2/3) Enter Key Length: ", enter a number for the key length.
+5. Lastly, the program will ask "(3/3) Enter First Word Length: ", same as the previous step, enter a number for the first word length.
+6. The program will find the key and then write all the information into a file called "output.txt". It will also print information in the terminal.

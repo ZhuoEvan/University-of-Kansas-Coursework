@@ -1,0 +1,55 @@
+<!doctype html> <!-- Declare document as html-->
+<html> <!-- Start html -->
+    <h1>Notes Website</h1> <!-- Header at the top of the browser -->
+    <body> <!-- Start body -->
+		<!-- Information with an empty line below -->
+        This website keeps a file called notes.txt for you. <br><br> 
+        To create a notes.txt type in the box and press the "Save" button. <br><br> 
+        You can edit the file and save it again. <br><br> 
+        Next time you access this page, it will load the notes.txt you saved last time. <br><br> 
+    <form> <!-- Start form -->
+        <textarea rows="15" cols ="65"></textarea> <br> <!--Text Area for user to type | Used w3schools.com-->
+        <input type="button" value="Save" onclick="saveNotes()"> <!-- Save button under the text area -->
+    </form> <!-- End form -->
+    <script> //Start JavaScript script | Used Google Gemini
+        let textarea = document.querySelector("textarea"); //Access textarea | Promise Created
+		
+		async function loadNotes() { //loadNotes function
+			try { //Run until an error is encountered
+				const response = await fetch("/notes.txt"); //fetch notes.txt from server
+				if (!response.ok) { //Check if the response is not 200-299
+                    if (response.status === 404) { //If the file does not exist
+                        textarea.value = ""; //Empty textarea
+                        return; //return nothing
+                    }
+                    throw new Error(`Failed to load notes: ${response.status}`); //Raise error
+                }
+                const data = await response.text(); //Get the text from response
+                textarea.value = data; //Assign text in textarea as data
+            } catch (error) { //An error was encountered
+                console.error("Error loading notes:", error); //Detail the error
+            }
+        }
+			
+		async function saveNotes() { //saveNotes function | Promise Created
+			const notes = textarea.value; //Get the text from textarea
+			try { //Run until an error is encountered
+				const response = await fetch("/notes.txt", { //fetch notes.txt from server
+					method: "PUT", //request method
+					headers: {
+						'Content-Type': 'text/plain' //media type for the request
+					},
+					body: notes //Add notes to the request
+				});
+				if (!response.ok) { //Check if the response is not 200-299
+                    throw new Error(`Failed to save notes: ${response.status}`); //Raise error
+                }
+				alert("Save Completed!"); //Alert that the save is complete
+            } catch (error) { //An error was encountered
+                console.error("Error saving notes:", error); //Detail the error
+            }
+        }
+		window.onload = loadNotes(); //Load Notes once window opens
+    </script> <!-- End Script -->
+	</body> <!-- End Body -->
+</html> <!-- End html -->
