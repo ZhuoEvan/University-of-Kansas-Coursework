@@ -1,0 +1,55 @@
+<!doctype html> <!-- Declare document as html -->
+<html> <!-- Start html -->
+<head> <!-- Start header --> <!-- -->
+<title>Zhuo's Go KU Page</title> <!-- Set the tab title -->
+<style>
+	tab-panel button.selected {
+      color: red;
+	}
+	tab-panel button {
+      color: blue;
+	}
+</style> 
+</head> 
+<body> 
+    <tab-panel> 
+        <div data-tabname="Rock">Rock ...</div> 
+        <div data-tabname="Chalk">Rock Chalk ...</div> 
+        <div data-tabname="Jayhawk">Rock Chalk Jayhawk ...</div> 
+        <div data-tabname="Go KU!">Rock Chalk Jayhawk - Go KU!</div> 
+    </tab-panel> 
+    
+    <script> 
+        function asTabs(node) { 
+            const tabs = Array.from(node.children); 
+            const tabList = document.createElement("div"); 
+
+            tabs.forEach((tab, index) => { 
+                const button = document.createElement("button"); 
+                button.textContent = tab.getAttribute("data-tabname"); 
+                button.addEventListener("click", () => selectTab(index)); 
+                tabList.appendChild(button); 
+            });
+
+            node.insertBefore(tabList, node.firstChild); 
+
+            function selectTab(selectIndex) { 
+				const buttons = tabList.querySelectorAll("button"); 
+                tabs.forEach((tab, index) => { 
+                    if (index === selectIndex) { 
+                        tab.style.display = ""; 
+						buttons[index].classList.add("selected"); 
+                    } else { 
+                        tab.style.display = "none"; 
+						buttons[index].classList.remove("selected"); 
+                    }
+                });
+            }
+
+            selectTab(0);
+        }
+
+        asTabs(document.querySelector("tab-panel"));
+    </script> <!-- End Script -->
+</body> <!-- End Body -->
+</html> <!-- End html -->

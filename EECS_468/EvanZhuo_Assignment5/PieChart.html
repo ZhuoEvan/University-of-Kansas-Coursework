@@ -1,0 +1,97 @@
+<!--Title: EECS 468 Assignment 5-->
+<!--Description: Two Pie Charts-->
+<!--Inputs: None-->
+<!--Output: Pie Charts with Data Set 1 and Data Set 2-->
+<!--Collaborators: eloquentjavascript.net | geeksforgeeks | Google Gemini -->
+<!--Name: Evan Zhuo-->
+<!--Date: 03/20/25-->
+<!--PieChart.html-->
+
+<!doctype html> <!-- Declare document as html -->
+<html> <!-- Start html -->
+<head> <!-- Start header -->
+<title>PieChart</title> <!-- Tab naming -->
+	<style> /* Internal CSS | Used geeksforgeeks */
+	body { /* Change all body style */
+		color: blue; /* Text color to blue */
+		font-size: 40px; /* Font size to 40px */
+		font-family: sans-serif; /* Font family to sans-serif */
+	}
+	</style> <!-- End Style -->
+</head> <!-- End header -->
+<body> <!-- Start Body -->
+	<div> Data Set 1</div> <!-- Title for the Data Set 1 pie chart -->
+	<div> <canvas id="pie1" width="300" height="300"></canvas> <!-- Canvas for Pie Chart 1 --></div>
+	<div><br> Data Set 2 </div> <!-- Title for the Data Set 2 pie chart -->
+	<div><canvas id="pie2" width="300" height="300"></canvas> <!-- Canvas for Pie Chart 2 --></div>
+	
+	<script> //Start JavaScript script
+		const dataSet1 = [ //Collection of data for dataSet1
+		  {name: "Very happy", count: 63, color: "green"}, //Very happy data in dataSet1
+		  {name: "Happy", count: 104, color: "lightgreen"}, //Happy data in dataSet1
+		  {name: "Neutral", count: 87, color: "yellow"}, //Neutral data in dataSet1
+		  {name: "Unhappy", count: 36, color: "pink"}, //Unhappy data in dataSet1
+		  {name: "Very unhappy", count: 26, color: "red"}, //Very unhappy data in dataSet1
+		  {name: "No comment", count: 18, color: "silver"} //No comment data in dataSet1
+		];
+		//Drawing the Pie Chart for dataSet1 | Used eloquentjavascript.net
+		let circle1 = document.getElementById("pie1").getContext("2d"); //Access pie1 canvas and renders it as 2d
+		let total1 = dataSet1
+			.reduce((sum1, {count}) => sum1 + count, 0); //Add up all the counts and assign the sum to total
+		let currentAngle1 = -0.5 * Math.PI; //Initialize a position for currentAngle1
+		//for-loop: access individual data of dataSet1
+		for (let result1 of dataSet1) {
+			let sliceAngle1 = (result1.count / total1) * 2 * Math.PI; //Divide the individual count by total to get percentage of pie chart
+			circle1.beginPath(); //Start the drawing of the pie chart
+			circle1.arc(150, 150, 150,
+						currentAngle1, currentAngle1 + sliceAngle1); //Draw the arc of the slice
+			currentAngle1 += sliceAngle1; //Add slice to currentAngle1 to start a new slice
+			circle1.lineTo(150, 150); //Create a line from arc to circle center
+			circle1.fillStyle = result1.color; //Fill the slice with assigned color
+			circle1.fill(); //Fill the circle slice
+			circle1.closePath(); //Close the slice, resulting in the slice being drawn
+			
+			//Adding Text into the Pie Chart | Used Google Gemini
+			const midAngle1 = currentAngle1 - sliceAngle1 / 2; //Get the average angle (middle of slice)
+			const x1 = 150 + Math.cos(midAngle1) * 80; //Set the x coordinate for the text to be towards the center of the slice
+			const y1 = 150 + Math.sin(midAngle1) * 80; //Set the y coordinate for the text to be towards the center of the slice
+			circle1.fillStyle = "black"; //Set text color to black
+			circle1.font = "12px Arial"; //Set font to 12px Arial
+			circle1.textAlign = "center"; //Align the text in the middle
+			circle1.fillText(result1.name, x1, y1); //Insert the name at the center of the slice of pie chart 1
+		}
+		const dataSet2 = [ //Collection of data for dataSet2
+		  {name: "Satisfied", count: 213, color: "lightblue"}, //Satisfied data in dataSet2
+		  {name: "Neutral", count: 927, color: "yellow"}, //Neutral data in dataSet2
+		  {name: "Unsatisfied", count: 463, color: "red"}, //Unsatisfied data in dataSet2
+		  {name: "No comment", count: 256, color: "silver"} //No comment data in dataSet2
+		];
+		//Drawing the Pie Chart for dataSet2 | Used eloquentjavascript.net
+		let circle2 = document.getElementById("pie2").getContext("2d"); //Access pie2 canvas and renders it as 2d
+		let total2 = dataSet2
+			.reduce((sum2, {count}) => sum2 + count, 0); //Add up all the counts and assign the sum to total
+		let currentAngle2 = -0.5 * Math.PI; //Initialize a position for currentAngle2
+		//for-loop: access individual data of dataSet2
+		for (let result2 of dataSet2) {
+			let sliceAngle2 = (result2.count / total2) * 2 * Math.PI; //Divide the individual count by total to get percentage of pie chart
+			circle2.beginPath(); //Start the drawing of the pie chart
+			circle2.arc(150, 150, 150,
+						currentAngle2, currentAngle2 + sliceAngle2); //Draw the arc of the slice
+			currentAngle2 += sliceAngle2; //Add slice to currentAngle2 to start a new slice
+			circle2.lineTo(150, 150); //Create a line from arc to circle center
+			circle2.fillStyle = result2.color; //Fill the slice with assigned color
+			circle2.fill(); //Fill the circle slice
+			circle2.closePath(); //Close the slice, resulting in the slice being drawn
+		
+			//Adding Text into the Pie Chart | Used Google Gemini
+			const midAngle2 = currentAngle2 - sliceAngle2 / 2; //Get the average angle (middle of slice)
+			const x2 = 150 + Math.cos(midAngle2) * 80; //Set the x coordinate for the text to be towards the center of the slice
+			const y2 = 150 + Math.sin(midAngle2) * 80; //Set the y coordinate for the text to be towards the center of the slice
+			circle2.fillStyle = "black"; //Set text color to black
+			circle2.font = "12px Arial"; //Set font to 12px Arial
+			circle2.textAlign = "center"; //Align the text in the middle
+			circle2.fillText(result2.name, x2, y2); //Insert the name at the center of the slice of pie chart 2
+		}
+	</script> <!-- End script -->
+</body> <!-- End body -->
+</html> <!-- End html -->
