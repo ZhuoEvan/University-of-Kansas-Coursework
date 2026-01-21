@@ -1,0 +1,5 @@
+Total average: 8.5
+Row 1 average: 2.5
+Row 2 average: 6.5
+Row 3 average: 10.5
+Row 4 average: 14.5
